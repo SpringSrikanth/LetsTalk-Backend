@@ -16,7 +16,7 @@ module.exports=(req,res, next)=>{
 	}
 
 	const token = authorization.replace("Bearer ",'');
-	const jwtSecretKey = process.env.JWT_SECRET_KEY || MY_SECRET_KEY_koseksi_pachipulusula;
+	const jwtSecretKey = process.env.JWT_SECRET_KEY || "MY_SECRET_KEY_koseksi_pachipulusula";
 	jwt.verify(token,jwtSecretKey,async (err,payload) => {
 		if(err){
 			return res.status(401).send({"message":"Please login!"});

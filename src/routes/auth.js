@@ -91,7 +91,7 @@ router.post('/signin',[auditAuth], async (req, res) => {
 			return res.status(402).send({ "message": "User not found with the mentioned email id" });
 		}
 		await user.comparePassword(password);
-		const jwtSecretKey = process.env.JWT_SECRET_KEY || MY_SECRET_KEY_koseksi_pachipulusula;
+		const jwtSecretKey = process.env.JWT_SECRET_KEY || "MY_SECRET_KEY_koseksi_pachipulusula";
 		const jwtTokenExpireTime = Number(process.env.JWT_TOKEN_EXPIRATION_TIME) || 86400
 		const token = jwt.sign(
 			{ "user_id": user._id, "email_id": user.email, "username": user.username },
