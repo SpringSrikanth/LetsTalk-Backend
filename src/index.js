@@ -28,7 +28,21 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-app.use(cors());
+//app.use(cors()); //enabling for all origins
+const corsString = process.env.CORS_ORIGINS || 'http://localhost:4200';
+const whitelist  = corsString.split(',');
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error())
+    }
+  }
+}
+
+app.use(cors(corsOptions));
+
 
 app.use(bodyParser.json());
 
