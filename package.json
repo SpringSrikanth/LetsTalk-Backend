@@ -1,5 +1,5 @@
 {
-  "name": "track-server",
+  "name": "letstalk-backend",
   "version": "1.0.1",
   "description": "Jwt authentication related project access token to access the routes",
   "main": "index.js",
