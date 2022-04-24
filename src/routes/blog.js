@@ -63,6 +63,16 @@ router.put('/blogs/:id' ,async (req, res) => {
     }
 })
 
+router.get('/blogs/:id',async(req,res)=>{
+	try {
+		const blog = await Blog.findById(req.params.id);
+		res.status(200).json({blog})
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).send({message:error.message});
+	}
+})
+
 
 router.get('/blogs', async (req, res) => {
     try {
